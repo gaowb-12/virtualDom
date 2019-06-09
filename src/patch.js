@@ -23,7 +23,7 @@ function doPatch(node,patches){
             case 'ATTRS':
                 break;
             case 'TEXT':
-            node.textContent=patch.text
+                node.textContent=patch.text
                 break;
             case 'REPLACE':
                 //判断节点是元素节点还是文本节点

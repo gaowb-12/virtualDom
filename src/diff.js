@@ -1,4 +1,4 @@
-
+import { render,createElement } from "./element";
 function diff(oldTree,newTree){
     let patches={}
     let index=0;//初始化第一次比较的位置
@@ -36,6 +36,7 @@ const ATTRS='ATTRS'
 const TEXT='TEXT'
 const REMOVE='REMOVE'
 const REPLACE='REPLACE'
+const INSERT='INSERT'
 let Index=0
 function walk(oldTree,newTree,index,patches){
     // 创建自己的补丁包,里面的每个对象包含了一个type
@@ -59,8 +60,8 @@ function walk(oldTree,newTree,index,patches){
         if(Object.keys(attrs).length>0){
             currentPatch.push({type:ATTRS,attrs})
         }
+
         // 如果有子节点，遍历
-        
         diffChildren(oldTree.children,newTree.children,patches)
     }else{
         // 说明节点被替换了
